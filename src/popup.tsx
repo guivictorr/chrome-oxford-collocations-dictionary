@@ -10,7 +10,7 @@ import "./style/style.css"
 import React from "react"
 
 import { useDebounce } from "./hooks/useDebounce"
-import { Collocation, parseHtml } from "./scrapper"
+import { parseHtml, type Collocation } from "./scrapper"
 import { remapType } from "./utils"
 
 const queryClient = new QueryClient()
