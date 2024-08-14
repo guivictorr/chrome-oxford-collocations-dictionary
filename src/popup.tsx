@@ -5,12 +5,13 @@ import {
 } from "@tanstack/react-query"
 import { useEffect, useState } from "react"
 
-import { parseHtml, type Collocation } from "~src/scrapper"
-
 import "./style/style.css"
 
-import { useDebounce } from "~src/hooks/useDebounce"
-import { remapType } from "~src/utils"
+import React from "react"
+
+import { useDebounce } from "./hooks/useDebounce"
+import { Collocation, parseHtml } from "./scrapper"
+import { remapType } from "./utils"
 
 const queryClient = new QueryClient()
 
