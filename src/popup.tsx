@@ -112,9 +112,9 @@ function Content() {
               <div className="p-1">
                 <p className="font-medium">Collocations</p>
                 <ul className="flex gap-1 flex-wrap mt-1">
-                  {selectedGroup.collocations.map((collocation, index) => (
+                  {selectedGroup.collocations.map((collocation) => (
                     <li
-                      key={index}
+                      key={collocation}
                       className="px-1.5 py-0.5 bg-slate-500 text-slate-200 rounded-md">
                       {collocation}
                     </li>
