@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "plasmo dev",
     "build": "plasmo build",
-    "package": "plasmo package"
+    "package": "plasmo package",
+    "prepare": "husky"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.51.23",
@@ -22,6 +23,7 @@
     "@types/react": "18.2.48",
     "@types/react-dom": "18.2.18",
     "autoprefixer": "^10.4.20",
+    "husky": "^9.1.4",
     "postcss": "^8.4.41",
     "prettier": "3.2.4",
     "stream-browserify": "^3.0.0",
