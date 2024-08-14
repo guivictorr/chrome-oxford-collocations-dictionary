@@ -31,3 +31,24 @@ This should create a production bundle for your extension, ready to be zipped an
 ## Submit to the webstores
 
 The easiest way to deploy your Plasmo extension is to use the built-in [bpp](https://bpp.browser.market) GitHub action. Prior to using this action however, make sure to build your extension and upload the first version to the store to establish the basic credentials. Then, simply follow [this setup instruction](https://docs.plasmo.com/framework/workflows/submit) and you should be on your way for automated submission!
+
+# 🤔 How to contribute
+
+## Conventional Commits
+
+From [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/#summary)
+
+> "The Conventional Commits specification is a lightweight convention on top of commit messages. It provides an easy set of rules for creating an explicit commit history; which makes it easier to write automated tools on top of. This convention dovetails with SemVer, by describing the features, fixes, and breaking changes made in commit messages."
+
+We use [Commitlint](https://github.com/conventional-changelog/commitlint) tool to check if the commit messages are following the Conventional Commits specification
+
+- Fork this repository;
+- Create a branch with your feature: `git checkout -b my-feature`;
+- Commit your changes: `git commit -m 'feat: My new feature'`;
+- Push to your branch: `git push origin my-feature`.
+
+Once your pull request has been merged, you can delete your branch.
+
+## 📝 License
+
+This project is under the MIT license. See the [LICENSE](https://github.com/guivictorr/collocation-dictionary-extension/blob/main/LICENSE) file for more details.
