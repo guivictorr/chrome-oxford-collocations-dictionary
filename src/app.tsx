@@ -6,6 +6,7 @@ import { useDebounce } from "./hooks/useDebounce"
 import { parseHtml, type Collocation } from "./lib/scrapper"
 import { remapType } from "./lib/utils"
 import { Loading } from "./loading"
+import { Search } from "./search"
 
 export function App() {
   const [selectedGroup, setSelectedGroup] = useState<Collocation | null>(null)
@@ -33,18 +34,7 @@ export function App() {
 
   return (
     <div className="w-[420px] bg-slate-50 text-slate-800">
-      <header>
-        <input
-          type="text"
-          placeholder="Type to start searching"
-          data-loading={isLoading}
-          className="w-full bg-slate-50 border-b border-slate-200 p-3 text-sm outline-none data-[loading='true']:animate-pulse"
-          autoFocus
-          onChange={(event) => {
-            setQuery(event.currentTarget.value)
-          }}
-        />
-      </header>
+      <Search onSearchChange={setQuery} />
       {isLoading && <Loading />}
       {!!data && (
         <main className="flex items-start">
