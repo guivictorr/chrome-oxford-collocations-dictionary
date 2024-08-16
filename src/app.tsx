@@ -1,9 +1,8 @@
-import { useQuery } from "@tanstack/react-query"
 import { useEffect, useState } from "react"
 
 import { Details } from "./detais"
-import { useDebounce } from "./hooks/useDebounce"
-import { parseHtml, type Collocation } from "./lib/scrapper"
+import { useCollocations } from "./hooks/useCollocations"
+import { type Collocation } from "./lib/scrapper"
 import { remapType } from "./lib/utils"
 import { Loading } from "./loading"
 import { Search } from "./search"
@@ -12,34 +11,27 @@ export function App() {
   const [selectedGroup, setSelectedGroup] = useState<Collocation | null>(null)
 
   const [query, setQuery] = useState("")
-  const deferredQuery = useDebounce(query, 500)
-  const { data, isLoading } = useQuery({
-    queryKey: ["word", deferredQuery],
-    queryFn: () =>
-      fetch(
-        `https://www.freecollocation.com/search?word=${deferredQuery}`
-      ).then((res) => res.text()),
-    select: parseHtml,
-    staleTime: Infinity,
-    enabled: !!deferredQuery
-  })
+  const { collocations, isLoading } = useCollocations(query)
 
   useEffect(() => {
-    if (data === undefined || (data && data.length <= 0)) {
+    if (
+      collocations === undefined ||
+      (collocations && collocations.length <= 0)
+    ) {
       setSelectedGroup(null)
       return
     }
-    setSelectedGroup(data[0].collocationGroup[0])
-  }, [data])
+    setSelectedGroup(collocations[0].collocationGroup[0])
+  }, [collocations])
 
   return (
     <div className="w-[420px] bg-slate-50 text-slate-800">
       <Search onSearchChange={setQuery} />
       {isLoading && <Loading />}
-      {!!data && (
+      {!!collocations && (
         <main className="flex items-start">
           <ul className="p-1 h-52 w-2/5 border-r border-slate-200 overflow-auto shrink-0">
-            {data.map((item) => (
+            {collocations.map((item) => (
               <li key={item.type}>
                 <span className="text-slate-500 block my-2">{item.type}</span>
                 <ul className="space-y-1">
@@ -47,7 +39,7 @@ export function App() {
                     <li key={group.id}>
                       <button
                         data-selected={selectedGroup?.id === group.id}
-                        className="flex justify-between items-center gap-1 px-2 py-1 hover:bg-slate-200 data-[selected='true']:bg-slate-200 rounded-md w-full"
+                        className="flex justify-between items-center gap-1 px-2 py-1 hover:bg-slate-200 collocations-[selected='true']:bg-slate-200 rounded-md w-full"
                         type="button"
                         onClick={() => {
                           setSelectedGroup(group)
@@ -65,7 +57,7 @@ export function App() {
               </li>
             ))}
           </ul>
-          {!!selectedGroup && !!data && (
+          {!!selectedGroup && !!collocations && (
             <Details selectedGroup={selectedGroup} />
           )}
         </main>
