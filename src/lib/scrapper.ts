@@ -13,7 +13,7 @@ export function parseHtml(data: string) {
   const doc = parser.parseFromString(data, "text/html")
 
   // Extract the items with class "item" inside the div with id "leftnav"
-  const items = doc.querySelectorAll("#leftnav .item")
+  const items = doc.querySelectorAll(".item")
 
   items.forEach((item) => {
     // Extract the type from the first "p" of the item which contains an "i" element
