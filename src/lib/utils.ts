@@ -4,7 +4,8 @@ export function remapType(type: string) {
       "ADJ.": "Adjective",
       "PREP.": "Preposition",
       "ADV.": "Adverb",
-      PHRASES: "Phrases"
+      PHRASES: "Phrases",
+      "QUANT.": "Quantity"
     }[type] ?? type
   )
 }

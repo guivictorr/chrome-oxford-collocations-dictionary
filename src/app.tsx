@@ -25,12 +25,12 @@ export function App() {
   }, [collocations])
 
   return (
-    <div className="w-[420px] bg-slate-50 text-slate-800">
+    <div className="w-[520px] bg-slate-50 text-slate-800">
       <Search onSearchChange={setQuery} />
       {isLoading && <Loading />}
       {!!collocations && (
         <main className="flex items-start">
-          <ul className="p-1 h-52 w-2/5 border-r border-slate-200 overflow-auto shrink-0">
+          <ul className="p-1 h-72 w-2/5 border-r border-slate-200 overflow-auto shrink-0">
             {collocations.map((item) => (
               <li key={item.type}>
                 <span className="text-slate-500 block my-2">{item.type}</span>

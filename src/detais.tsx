@@ -9,8 +9,8 @@ export function Details({ selectedGroup }: DetailsProps) {
   return (
     <section
       aria-label="Details"
-      className="grow h-52 overflow-auto divide-y divide-slate-200">
-      <div className="p-1">
+      className="grow h-72 overflow-auto divide-y divide-slate-200">
+      <div className="p-2">
         <p>
           <span className="font-medium">Type</span> -{" "}
           {remapType(selectedGroup.type)}
@@ -22,7 +22,7 @@ export function Details({ selectedGroup }: DetailsProps) {
           </p>
         )}
       </div>
-      <div className="p-1">
+      <div className="p-2">
         <p className="font-medium">Collocations</p>
         <ul className="flex gap-1 flex-wrap mt-1">
           {selectedGroup.collocations.map((collocation) => (
