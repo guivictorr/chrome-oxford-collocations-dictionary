@@ -1,3 +1,6 @@
+import { clsx, type ClassValue } from "clsx"
+import { twMerge } from "tailwind-merge"
+
 export function remapType(type: string) {
   return (
     {
@@ -8,4 +11,8 @@ export function remapType(type: string) {
       "QUANT.": "Quantity"
     }[type] ?? type
   )
+}
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
 }
