@@ -1,7 +1,7 @@
 {
   "name": "online-oxford-collocation-dictionary",
   "displayName": "Online oxford collocation dictionary",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Look up for word collocations",
   "author": "Guilherme Victor",
   "scripts": {
@@ -53,7 +53,7 @@
   },
   "manifest": {
     "host_permissions": [
-      "https://*/*"
+      "https://m.freecollocation.com/browse"
     ]
   }
 }
