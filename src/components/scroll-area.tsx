@@ -16,7 +16,7 @@ const ScrollArea = React.forwardRef<
       {children}
     </ScrollAreaPrimitive.Viewport>
     <ScrollBar />
-    <div className="w-full h-1/5 from-background bg-gradient-to-t bottom-0 absolute" />
+    <div className="w-full h-1/5 from-background bg-gradient-to-t bottom-0 absolute pointer-events-none" />
     <ScrollAreaPrimitive.Corner />
   </ScrollAreaPrimitive.Root>
 ))
