@@ -1,6 +1,7 @@
 name: "Submit to Web Store"
 on:
-  workflow_dispatch:
+  release:
+    type: [published]
 
 jobs:
   build:
