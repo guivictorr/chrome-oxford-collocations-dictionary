@@ -9,6 +9,7 @@
     "build": "plasmo build",
     "package": "plasmo package",
     "format": "prettier . --write",
+    "release": "commit-and-tag-version",
     "lint": "eslint --fix src",
     "prepare": "husky",
     "test": "vitest"
