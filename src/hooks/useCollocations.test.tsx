@@ -1,20 +1,8 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+import { wrapper } from "@/tests/utils"
 import { renderHook, waitFor } from "@testing-library/react"
-import React from "react"
 import { describe, expect, it } from "vitest"
 
 import { useCollocations } from "./useCollocations"
-
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      retry: false
-    }
-  }
-})
-const wrapper = ({ children }) => (
-  <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-)
 
 describe("useCollocations", () => {
   it("should parse online oxford collocations dictionary", async () => {
