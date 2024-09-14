@@ -1,15 +1,13 @@
-name: CI
+name: "Basic Checks"
 
 on:
-  push:
-    branches:
-      - main
   pull_request:
     branches:
       - main
 
 jobs:
-  ci:
+  checks:
+    name: Basic Checks
     runs-on: ubuntu-24.04
     steps:
       - name: Checkout code
