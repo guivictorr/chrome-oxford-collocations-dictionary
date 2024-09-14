@@ -1,5 +1,6 @@
-import { describe, expect, it } from "vitest"
+import { describe, expect, it, vi } from "vitest"
 
+import type { ScrapperResult } from "./lib/scrapper"
 import { fireEvent, render, screen } from "./lib/tests/utils"
 import IndexPopup from "./popup"
 
@@ -7,25 +8,38 @@ vi.mock("./hooks/useCollocations.ts", () => ({
   useCollocations: () => ({
     isLoading: false,
     isSuccess: true,
-    collocations: [
+    data: [
       {
-        type: "noun",
-        collocationGroup: [
+        id: "id1",
+        title: "noun",
+        items: [
           {
-            id: "id1",
-            type: "ADJ.",
-            collocations: ["collocation-item", "collocation-item"],
-            definition: "definition"
+            title: "ADJ.",
+            id: "id2",
+            definition: "definition",
+            collocations: [
+              {
+                id: "id3",
+                example: "example",
+                words: ["collocation-item", "collocation-item"]
+              }
+            ]
           },
           {
-            id: "id2",
-            type: "QUANT.",
-            collocations: ["collocation-quant"],
-            definition: "definition"
+            title: "QUANT.",
+            id: "id4",
+            definition: "definition",
+            collocations: [
+              {
+                id: "id5",
+                example: "example",
+                words: ["collocation-quant"]
+              }
+            ]
           }
         ]
       }
-    ]
+    ] satisfies ScrapperResult[]
   })
 }))
 

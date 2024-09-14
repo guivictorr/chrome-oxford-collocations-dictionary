@@ -1,12 +1,33 @@
 export interface Collocation {
+  words: string[]
   id: string
-  type: string
-  collocations: string[]
-  definition?: string
+  example: string
 }
 
-export function parseHtml(data: string) {
-  const result: { type: string; collocationGroup: Collocation[] }[] = []
+export interface ScrapperItem {
+  title: string
+  id: string
+  definition?: string
+  collocations: Collocation[]
+}
+
+export interface ScrapperResult {
+  title: string
+  id: string
+  items: ScrapperItem[]
+}
+
+const uuid = () => window.crypto.randomUUID()
+function extractSingleItalic(text: string) {
+  const match = text.match(/<i>(.*?)<\/i>/)
+  return match ? match[1].trim() : ""
+}
+function stripHtmlAndItalics(text: string) {
+  return text.replace(/<i>.*?<\/i>|<[^>]+>/g, "")
+}
+
+export function scrapper(data: string): ScrapperResult[] {
+  const result: ScrapperResult[] = []
 
   // Parse the HTML string using DOMParser
   const parser = new DOMParser()
@@ -17,15 +38,15 @@ export function parseHtml(data: string) {
 
   items.forEach((item) => {
     // Extract the type from the first "p" of the item which contains an "i" element
-    const type = item.querySelector("p i")?.textContent?.trim() || ""
+    const title = item.querySelector("p.word i")?.textContent?.trim() || ""
 
     // Initialize the collocations array for the current item
-    const collocationsArray: Collocation[] = []
+    const items: ScrapperItem[] = []
     // Initialize a variable to hold the current definition
     let currentDefinition = ""
 
     // Loop through each paragraph inside the item
-    item.querySelectorAll("p").forEach((p) => {
+    item.querySelectorAll("p:not(.item)").forEach((p) => {
       // Check if the paragraph contains a "tt" element for definition
       if (p.querySelector("tt")) {
         currentDefinition = p.querySelector("tt")?.textContent?.trim() || ""
@@ -35,32 +56,36 @@ export function parseHtml(data: string) {
       const firstChild = p.firstElementChild
       if (firstChild && firstChild.tagName.toLowerCase() === "u") {
         // Extract the text content of the "u" element
-        const collocationType = firstChild.textContent?.trim() || ""
+        const itemTitle = firstChild.textContent?.trim() || ""
 
-        // Extract the text content of all "b" elements within the same paragraph
-        const collocations = Array.from(p.querySelectorAll("b")).map(
-          (b) => b.textContent?.trim() || ""
-        )
-
-        // Split the collocations text content by comma and pipe, then flatten the array and filter out empty strings
-        const flatCollocations = collocations
-          .flatMap((c) =>
-            c.split(",").flatMap((s) => s.split("|").map((str) => str.trim()))
-          )
-          .filter((str) => str.length > 0)
+        const wordsToFilter = ["etc."]
+        const collocations = p.innerHTML
+          .replace(/<u>.*?<\/u>/gi, "")
+          .split("|")
+          .map((item) => item.trim())
+          .map((item) => {
+            return {
+              example: extractSingleItalic(item),
+              words: stripHtmlAndItalics(item)
+                .split(",")
+                .map((item) => item.trim())
+                .filter((word) => !wordsToFilter.includes(word)),
+              id: uuid()
+            }
+          })
 
         // Add the extracted data to the collocations array
-        collocationsArray.push({
-          id: window.crypto.randomUUID(),
-          type: collocationType,
+        items.push({
+          id: uuid(),
+          title: itemTitle,
           definition: currentDefinition,
-          collocations: flatCollocations
+          collocations
         })
       }
     })
 
     // Add the extracted item with its collocations to the result array
-    result.push({ type, collocationGroup: collocationsArray })
+    result.push({ title, id: uuid(), items })
   })
 
   return result

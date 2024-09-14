@@ -1,4 +1,4 @@
-import { parseHtml } from "@/lib/scrapper"
+import { scrapper } from "@/lib/scrapper"
 import { useQuery } from "@tanstack/react-query"
 
 import { useDebounce } from "./useDebounce"
@@ -10,10 +10,10 @@ export function useCollocations(word: string) {
   const { data, isLoading, isSuccess } = useQuery({
     queryKey: ["word", deferredQuery],
     queryFn: () => fetch(`${URL}/${deferredQuery}`).then((res) => res.text()),
-    select: parseHtml,
+    select: scrapper,
     staleTime: Infinity,
     enabled: !!deferredQuery
   })
 
-  return { collocations: data ?? [], isLoading, isSuccess }
+  return { data: data ?? [], isLoading, isSuccess }
 }
