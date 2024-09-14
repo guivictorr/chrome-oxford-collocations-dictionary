@@ -12,22 +12,24 @@ import { Separator } from "@/components/separator"
 import type { Collocation } from "@/lib/scrapper"
 import { remapType } from "@/lib/utils"
 import { LoaderIcon } from "lucide-react"
-import { useEffect, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 
-import { useCollocations } from "../hooks/useCollocations"
+import { useCollocations } from "./hooks/useCollocations"
 
 export function App() {
   const [selectedItem, setSelectedItem] = useState("")
   const [query, setQuery] = useState("")
   const { collocations, isLoading } = useCollocations(query)
 
-  const selectedGroup = collocations.reduce((acc, item) => {
-    item.collocationGroup.forEach((currentGroup) => {
-      if (currentGroup.id !== selectedItem) return
-      acc = currentGroup
-    })
-    return acc
-  }, {} as Collocation)
+  const selectedGroup = useMemo(() => {
+    return collocations.reduce((acc, item) => {
+      item.collocationGroup.forEach((currentGroup) => {
+        if (currentGroup.id !== selectedItem) return
+        acc = currentGroup
+      })
+      return acc
+    }, {} as Collocation)
+  }, [selectedItem])
 
   useEffect(() => {
     if (!collocations[0]?.collocationGroup[0]) return
