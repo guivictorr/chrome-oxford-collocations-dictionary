@@ -9,10 +9,16 @@ import {
 } from "@/components/resizable"
 import { ScrollArea } from "@/components/scroll-area"
 import { Separator } from "@/components/separator"
-import { remapType } from "@/lib/utils"
+import { cn, remapType } from "@/lib/utils"
 import { LoaderIcon } from "lucide-react"
 import { useEffect, useMemo, useState } from "react"
 
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger
+} from "./components/tooltip"
 import { useCollocations } from "./hooks/useCollocations"
 import type { ScrapperItem } from "./lib/scrapper"
 
@@ -113,16 +119,43 @@ export function App() {
 
                   <Separator className="my-3" />
 
-                  <div className="flex flex-wrap grow-0 overflow-autuuo">
-                    {selectedGroup?.collocations?.map((collocation) => (
-                      <div
-                        className="flex flex-wrap gap-1 p-1 m-1 hover:opacity-50 transition-all"
-                        key={collocation.id}>
-                        {collocation.words.map((word, index) => (
-                          <Badge key={index}>{word}</Badge>
-                        ))}
-                      </div>
-                    ))}
+                  <div className="flex flex-wrap grow-0 overflow-auto">
+                    <p className="mb-3">
+                      Tip: Hover groups of words to see a possible example
+                    </p>
+                    <TooltipProvider>
+                      {selectedGroup?.collocations?.map((collocation) => (
+                        <Tooltip delayDuration={300} key={collocation.id}>
+                          <TooltipTrigger
+                            className={cn(
+                              "group flex flex-wrap rounded-md gap-1 p-1 m-1 ",
+                              {
+                                "[&:hover_div]:opacity-30":
+                                  !!collocation.example
+                              }
+                            )}>
+                            {collocation.words.map((word, index) => (
+                              <Badge
+                                key={index}
+                                className={cn("transition", {
+                                  "group-hover:opacity-100 group-hover:scale-105":
+                                    collocation.example.includes(word),
+                                  "group-hover:scale-95":
+                                    !collocation.example.includes(word) &&
+                                    !!collocation.example
+                                })}>
+                                {word}
+                              </Badge>
+                            ))}
+                          </TooltipTrigger>
+                          {!!collocation.example && (
+                            <TooltipContent>
+                              {collocation.example}
+                            </TooltipContent>
+                          )}
+                        </Tooltip>
+                      ))}
+                    </TooltipProvider>
                   </div>
                 </div>
               )}
