@@ -117,9 +117,6 @@ importers:
       lint-staged:
         specifier: ^15.2.9
         version: 15.2.9
-      msw:
-        specifier: ^2.4.6
-        version: 2.4.6(typescript@5.3.3)
       postcss:
         specifier: ^8.4.41
         version: 8.4.41
@@ -5435,15 +5432,18 @@ snapshots:
   '@bundled-es-modules/cookie@2.0.0':
     dependencies:
       cookie: 0.5.0
+    optional: true
 
   '@bundled-es-modules/statuses@1.0.1':
     dependencies:
       statuses: 2.0.1
+    optional: true
 
   '@bundled-es-modules/tough-cookie@0.1.6':
     dependencies:
       '@types/tough-cookie': 4.0.5
       tough-cookie: 4.1.4
+    optional: true
 
   '@commitlint/cli@19.4.0(@types/node@20.11.5)(typescript@5.3.3)':
     dependencies:
@@ -5767,6 +5767,7 @@ snapshots:
     dependencies:
       '@inquirer/core': 9.1.0
       '@inquirer/type': 1.5.3
+    optional: true
 
   '@inquirer/core@9.1.0':
     dependencies:
@@ -5783,12 +5784,15 @@ snapshots:
       strip-ansi: 6.0.1
       wrap-ansi: 6.2.0
       yoctocolors-cjs: 2.1.2
+    optional: true
 
-  '@inquirer/figures@1.0.5': {}
+  '@inquirer/figures@1.0.5':
+    optional: true
 
   '@inquirer/type@1.5.3':
     dependencies:
       mute-stream: 1.0.0
+    optional: true
 
   '@isaacs/cliui@8.0.2':
     dependencies:
@@ -5906,6 +5910,7 @@ snapshots:
       is-node-process: 1.2.0
       outvariant: 1.4.3
       strict-event-emitter: 0.5.1
+    optional: true
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
@@ -5919,14 +5924,17 @@ snapshots:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.17.1
 
-  '@open-draft/deferred-promise@2.2.0': {}
+  '@open-draft/deferred-promise@2.2.0':
+    optional: true
 
   '@open-draft/logger@0.3.0':
     dependencies:
       is-node-process: 1.2.0
       outvariant: 1.4.3
+    optional: true
 
-  '@open-draft/until@2.1.0': {}
+  '@open-draft/until@2.1.0':
+    optional: true
 
   '@parcel/bundler-default@2.9.3(@parcel/core@2.9.3)':
     dependencies:
@@ -7524,7 +7532,8 @@ snapshots:
     dependencies:
       '@types/node': 20.11.5
 
-  '@types/cookie@0.6.0': {}
+  '@types/cookie@0.6.0':
+    optional: true
 
   '@types/estree@1.0.5': {}
 
@@ -7543,6 +7552,7 @@ snapshots:
   '@types/mute-stream@0.0.4':
     dependencies:
       '@types/node': 20.11.5
+    optional: true
 
   '@types/node@20.11.5':
     dependencies:
@@ -7551,6 +7561,7 @@ snapshots:
   '@types/node@22.5.5':
     dependencies:
       undici-types: 6.19.8
+    optional: true
 
   '@types/parse-json@4.0.2': {}
 
@@ -7568,13 +7579,16 @@ snapshots:
 
   '@types/scheduler@0.23.0': {}
 
-  '@types/statuses@2.0.5': {}
+  '@types/statuses@2.0.5':
+    optional: true
 
-  '@types/tough-cookie@4.0.5': {}
+  '@types/tough-cookie@4.0.5':
+    optional: true
 
   '@types/trusted-types@2.0.7': {}
 
-  '@types/wrap-ansi@3.0.0': {}
+  '@types/wrap-ansi@3.0.0':
+    optional: true
 
   '@typescript-eslint/eslint-plugin@8.1.0(@typescript-eslint/parser@8.1.0(eslint@9.9.0(jiti@1.21.6))(typescript@5.3.3))(eslint@9.9.0(jiti@1.21.6))(typescript@5.3.3)':
     dependencies:
@@ -8195,7 +8209,8 @@ snapshots:
 
   convert-source-map@2.0.0: {}
 
-  cookie@0.5.0: {}
+  cookie@0.5.0:
+    optional: true
 
   copy-anything@2.0.6:
     dependencies:
@@ -8936,7 +8951,8 @@ snapshots:
 
   graphql@15.9.0: {}
 
-  graphql@16.9.0: {}
+  graphql@16.9.0:
+    optional: true
 
   handlebars@4.7.8:
     dependencies:
@@ -8970,7 +8986,8 @@ snapshots:
     dependencies:
       function-bind: 1.1.2
 
-  headers-polyfill@4.0.3: {}
+  headers-polyfill@4.0.3:
+    optional: true
 
   html-encoding-sniffer@4.0.0:
     dependencies:
@@ -9151,7 +9168,8 @@ snapshots:
 
   is-negative-zero@2.0.3: {}
 
-  is-node-process@1.2.0: {}
+  is-node-process@1.2.0:
+    optional: true
 
   is-number-object@1.0.7:
     dependencies:
@@ -9661,6 +9679,7 @@ snapshots:
       yargs: 17.7.2
     optionalDependencies:
       typescript: 5.3.3
+    optional: true
 
   mute-stream@1.0.0: {}
 
@@ -9805,7 +9824,8 @@ snapshots:
 
   os-tmpdir@1.0.2: {}
 
-  outvariant@1.4.3: {}
+  outvariant@1.4.3:
+    optional: true
 
   p-cancelable@3.0.0: {}
 
@@ -9866,7 +9886,8 @@ snapshots:
       lru-cache: 10.4.3
       minipass: 7.1.2
 
-  path-to-regexp@6.3.0: {}
+  path-to-regexp@6.3.0:
+    optional: true
 
   path-type@4.0.0: {}
 
@@ -10393,7 +10414,8 @@ snapshots:
 
   stackback@0.0.2: {}
 
-  statuses@2.0.1: {}
+  statuses@2.0.1:
+    optional: true
 
   std-env@3.7.0: {}
 
@@ -10410,7 +10432,8 @@ snapshots:
     optionalDependencies:
       bare-events: 2.4.2
 
-  strict-event-emitter@0.5.1: {}
+  strict-event-emitter@0.5.1:
+    optional: true
 
   string-argv@0.3.2: {}
 
@@ -10727,7 +10750,8 @@ snapshots:
 
   type-fest@2.19.0: {}
 
-  type-fest@4.26.1: {}
+  type-fest@4.26.1:
+    optional: true
 
   typed-array-buffer@1.0.2:
     dependencies:
@@ -10788,7 +10812,8 @@ snapshots:
 
   undici-types@5.26.5: {}
 
-  undici-types@6.19.8: {}
+  undici-types@6.19.8:
+    optional: true
 
   unicorn-magic@0.1.0: {}
 
@@ -11051,4 +11076,5 @@ snapshots:
 
   yocto-queue@1.1.1: {}
 
-  yoctocolors-cjs@2.1.2: {}
+  yoctocolors-cjs@2.1.2:
+    optional: true
