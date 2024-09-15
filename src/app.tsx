@@ -120,9 +120,6 @@ export function App() {
                   <Separator className="my-3" />
 
                   <div className="flex flex-wrap grow-0 overflow-auto">
-                    <p className="mb-3">
-                      Tip: Hover groups of words to see a possible example
-                    </p>
                     <TooltipProvider>
                       {selectedGroup?.collocations?.map((collocation) => (
                         <Tooltip delayDuration={300} key={collocation.id}>
@@ -130,7 +127,7 @@ export function App() {
                             className={cn(
                               "group flex flex-wrap rounded-md gap-1 p-1 m-1 ",
                               {
-                                "[&:hover_div]:opacity-30":
+                                "[&:hover_div]:opacity-30 bg-muted":
                                   !!collocation.example
                               }
                             )}>
@@ -144,12 +141,14 @@ export function App() {
                                     !collocation.example.includes(word) &&
                                     !!collocation.example
                                 })}>
-                                {word}
+                                {word
+                                  .replace(/~/gi, query)
+                                  .replace(/sth/gi, "something")}
                               </Badge>
                             ))}
                           </TooltipTrigger>
                           {!!collocation.example && (
-                            <TooltipContent>
+                            <TooltipContent className="break-all break-words max-w-[384px]">
                               {collocation.example}
                             </TooltipContent>
                           )}
