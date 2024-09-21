@@ -1,7 +1,7 @@
 {
   "name": "online-oxford-collocation-dictionary",
   "displayName": "Online Oxford Collocation Dictionary",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Look up for word collocations",
   "author": "Guilherme Victor",
   "scripts": {

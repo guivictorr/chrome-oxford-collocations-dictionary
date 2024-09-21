@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.1.1](https://github.com/guivictorr/chrome-oxford-collocations-dictionary/compare/v0.0.2...v0.1.1) (2024-09-21)
+
+
+### Features
+
+* displaying examples and highlighting the word of the example ([f02bb2f](https://github.com/guivictorr/chrome-oxford-collocations-dictionary/commit/f02bb2fdb10f19cec254dfaef8c4bbd8f3231bf0))
+* improving the experience of examples ([ad9ac0a](https://github.com/guivictorr/chrome-oxford-collocations-dictionary/commit/ad9ac0a1ce031224b57e1deaada9d3071a166c14))
+
+
+### Bug Fixes
+
+* adding pointer-events-none to the gradient at the bottom of the list ([1f96d0e](https://github.com/guivictorr/chrome-oxford-collocations-dictionary/commit/1f96d0ef3115e2ca97982dad958a80299c6d70db))
+* fixing the quantity of collocations on the list ([1ef4d44](https://github.com/guivictorr/chrome-oxford-collocations-dictionary/commit/1ef4d44b6675adffc7ff15c7931ba9db29e587ad))
+
 ## [0.1.0](https://github.com/guivictorr/chrome-oxford-collocations-dictionary/compare/v0.0.2...v0.1.0) (2024-09-15)
 
 
