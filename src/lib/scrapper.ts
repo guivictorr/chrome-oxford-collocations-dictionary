@@ -8,6 +8,7 @@ export interface ScrapperItem {
   title: string
   id: string
   definition?: string
+  totalCollocations: number
   collocations: Collocation[]
 }
 
@@ -74,11 +75,17 @@ export function scrapper(data: string): ScrapperResult[] {
             }
           })
 
+        const totalCollocations = collocations.reduce((total, collocation) => {
+          total += collocation.words.length
+          return total
+        }, 0)
+
         // Add the extracted data to the collocations array
         items.push({
           id: uuid(),
           title: itemTitle,
           definition: currentDefinition,
+          totalCollocations,
           collocations
         })
       }

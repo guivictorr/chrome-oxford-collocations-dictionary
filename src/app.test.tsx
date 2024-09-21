@@ -17,6 +17,7 @@ vi.mock("./hooks/useCollocations.ts", () => ({
             title: "ADJ.",
             id: "id2",
             definition: "definition",
+            totalCollocations: 2,
             collocations: [
               {
                 id: "id3",
@@ -29,6 +30,7 @@ vi.mock("./hooks/useCollocations.ts", () => ({
             title: "QUANT.",
             id: "id4",
             definition: "definition",
+            totalCollocations: 1,
             collocations: [
               {
                 id: "id5",
@@ -55,5 +57,14 @@ describe("App", () => {
     expect(option1).toBeChecked()
 
     expect(screen.getAllByText("collocation-item").length).toEqual(2)
+  })
+  it("should count the collocations correctly", () => {
+    render(<IndexPopup />)
+    expect(
+      screen.getByRole("radio", { name: /1 collocations as quantity/i })
+    ).toBeInTheDocument()
+    expect(
+      screen.getByRole("radio", { name: /2 collocations as adjective/i })
+    ).toBeInTheDocument()
   })
 })

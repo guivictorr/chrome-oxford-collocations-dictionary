@@ -15,6 +15,7 @@ describe("Scrapper", () => {
           id: expect.any(String),
           title: expect.any(String),
           definition: expect.any(String),
+          totalCollocations: expect.any(Number),
           collocations: expect.arrayContaining([
             expect.objectContaining({
               id: expect.any(String),

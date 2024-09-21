@@ -86,11 +86,12 @@ export function App() {
                               id={group.id}
                             />
                             <Label
+                              aria-label={`${group.totalCollocations} collocations as ${remapType(group.title)}`}
                               className="flex justify-between items-center peer-aria-checked:bg-muted w-full px-3 py-2 rounded-md"
                               htmlFor={group.id}>
                               {remapType(group.title)}
                               <span className="rounded-md bg-background px-2 py-1">
-                                {group.collocations.length}
+                                {group.totalCollocations}
                               </span>
                             </Label>
                           </li>
