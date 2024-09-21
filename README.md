@@ -55,4 +55,4 @@ Once your pull request has been merged, you can delete your branch.
 
 ## 📝 License
 
-This project is under the MIT license. See the [LICENSE](https://github.com/guivictorr/collocation-dictionary-extension/blob/main/LICENSE) file for more details.
+This project is under the GNU GENERAL PUBLIC LICENSE license. See the [LICENSE](https://github.com/guivictorr/collocation-dictionary-extension/blob/main/LICENSE) file for more details.
