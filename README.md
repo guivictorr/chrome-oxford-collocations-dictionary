@@ -1,5 +1,5 @@
 <div align="center">
-  <img width="732" alt="Screenshot 2024-08-31 at 19 38 25" src="https://github.com/user-attachments/assets/cbf295c0-435c-4c02-a473-75867b04a27e">
+  <img width="619" alt="Screenshot 2024-09-21 at 17 46 59" src="https://github.com/user-attachments/assets/490b69c3-2baf-4ddd-af3d-786fd59c7304">
 </div>
 
 This is a [Plasmo extension](https://docs.plasmo.com/) project bootstrapped with [`plasmo init`](https://www.npmjs.com/package/plasmo).
